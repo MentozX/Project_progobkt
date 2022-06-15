@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Projekt.Views.WeatherInfoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt.Views"
+        mc:Ignorable="d"
+        Width="600" Height="450"
+        d:DesignHeight="450" d:DesignWidth="800" Background="AliceBlue">
+
+    <Grid Background="AliceBlue">
+        <Button Visibility="Visible" Name="FetchButton" Content="Pobierz dane" Command="{Binding UpdateViewCommand}" CommandParameter="FetchWeatherInfo" Click="FetchData_Clicked" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0.743,0.401" Margin="0,185,0,0" Height="40" Width="292"/>
+        <TextBox Visibility="Visible" Name="CityName" HorizontalAlignment="Center" Margin="0,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="292" RenderTransformOrigin="0.503,1.169" Height="33"/>
+        <ComboBox Visibility="Visible"
+            Name="CitySelect"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            MinWidth="150" Margin="0,60,0,0"
+            ItemsSource="{Binding CitiesCollection, RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:WeatherInfoView}},
+            Mode=OneWay}"
+            SelectionChanged="CityComboBox_SelectionChanged" Width="292" Height="32" RenderTransformOrigin="0.51,-1.714"
+        />
+        <Grid>
+            <Label Visibility="Visible" FontWeight="Bold" FontSize="20" Name="ChooseCityLabel" Content="Wybierz miasto" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" Height="33" Width="188"/>
+            <Label Visibility="Visible" FontWeight="Bold" FontSize="20" Name="ChooseCityNameLabel" Content="Podaj nazwę miasta" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.921,-0.116" Width="228" Height="38"/>
+
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Długość geograficzna" Name="LongitudeLabel" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="290"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="Longitude" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="268" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Szerokość geograficzna" Name="LatitudeLabel" HorizontalAlignment="Left" Margin="318,10,0,0" VerticalAlignment="Top" Width="272"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="Latitude" HorizontalAlignment="Left" Margin="318,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="236" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Strefa czasowa" Name="TimeZoneLabel" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="290"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="TimeZone" HorizontalAlignment="Left" Margin="10,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="268" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Temperatura"  Name="TemperatureLabel" HorizontalAlignment="Left" Margin="318,71,0,0" VerticalAlignment="Top" Width="272"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="Temperature" HorizontalAlignment="Left" Margin="318,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="236" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Temperatura odczuwalna" Name="FeelTemperatureLabel" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="290"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="FeelTemperature" HorizontalAlignment="Left" Margin="10,174,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="268" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Ciśnienie" Name="PressureLabel" HorizontalAlignment="Left" Margin="318,140,0,0" VerticalAlignment="Top" Width="272"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="Pressure" HorizontalAlignment="Left" Margin="318,174,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="236" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Prędkość wiatru m/s" Name="WindSpeedLabel" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="290"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="WindSpeed" HorizontalAlignment="Left" Margin="10,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="268" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+            <Label FontWeight="Bold" Visibility="Hidden" Content="Zachmurzenie %" Name="CloudLabel" HorizontalAlignment="Left" Margin="318,210,0,0" VerticalAlignment="Top" Width="272"/>
+            <TextBox Visibility="Hidden" IsReadOnly="True" Name="Cloud" HorizontalAlignment="Left" Margin="318,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="236" RenderTransformOrigin="-0.308,-0.334" Height="23"/>
+
+            <Button Visibility="Hidden" Name="SaveDataButton" Content="Zapisz dane" Click="SaveDataButton_Clicked" Margin="19,278,476,127"/>
+            <Button Visibility="Hidden" Name="ReadDataButton" Content="Wróć" Click="ReadDataButton_Clicked" Margin="19,344,476,56"/>
+        </Grid>
+    </Grid>
+</UserControl>
